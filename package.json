@@ -1,0 +1,19 @@
+{
+  "name": "ewol-campaign",
+  "version": "1.0.0",
+  "description": "Smart contract governing the campaigns for the Ewol Academy Web3 Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "heidrian.eth",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0",
+    "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "hardhat": "^2.12.2"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0"
+  }
+}
