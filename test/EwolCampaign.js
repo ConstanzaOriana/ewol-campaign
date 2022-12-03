@@ -6,6 +6,7 @@ const { weeks, days } = require("@nomicfoundation/hardhat-network-helpers/dist/s
 const registryContractName = "EwolCampaignRegistry";
 let registryInstance;
 let registryAddress;
+// comment
 
 let prototypeAddress;
 
