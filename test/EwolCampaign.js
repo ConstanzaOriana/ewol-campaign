@@ -483,6 +483,40 @@ describe("EwolCampaign", function () {
         );
     });
 
+    it("Should not return pending expenditure for any Ewoler o Staff Member if the Bootcamp is less than a week", async function() {
+
+      await helpers.time.increase(days(2)); 
+
+      const ewolerPendingExpenditure = await campaignInstance.pendingEwolerExpenditure(0);
+      expect(ewolerPendingExpenditure).to.equal(0)
+
+      const staffPendingExpenditure = await campaignInstance.pendingEwolerExpenditure(0);
+      expect(staffPendingExpenditure).to.equal(0)
+      
+    });
+
+    it("Should return Ewoler & Staff pending Expenditure when elapsed time > 1 week", async function () {
+
+      const FirstEwolerWeeklyExpenditure = await campaignInstance.ewolerWeeklyExpenditure(0)
+      const FirstStaffWeeklyExpenditure = await campaignInstance.stafferWeeklyExpenditure(0)
+      
+      await helpers.time.increase(days(7));
+      const ewolerPendingExpenditureFirstWeek = await campaignInstance.pendingEwolerExpenditure(0);
+      expect(ewolerPendingExpenditureFirstWeek).to.equal(FirstEwolerWeeklyExpenditure)
+      
+      const staffPendingExpenditureFirstWeek = await campaignInstance.pendingStafferExpenditure(0);
+      expect(staffPendingExpenditureFirstWeek).to.equal(FirstStaffWeeklyExpenditure)
+
+      await helpers.time.increase(days(7)); 
+      const ewolerPendingExpenditureSecondWeek = await campaignInstance.pendingEwolerExpenditure(0);
+      expect(ewolerPendingExpenditureSecondWeek).to.equal(FirstEwolerWeeklyExpenditure.mul(2))
+      
+      const staffPendingExpenditureSecondWeek = await campaignInstance.pendingEwolerExpenditure(0);
+      expect(staffPendingExpenditureSecondWeek).to.equal(FirstStaffWeeklyExpenditure.mul(2))
+
+    });
+
+
     it("Should prevent to finish the Bootcamp if it hasn't reached the WeeksOfBootcamp var yet", async function() {
 
       const failedFinishBootcampTx = campaignInstance.finishBootcamp();
