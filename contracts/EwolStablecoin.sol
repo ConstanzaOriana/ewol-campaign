@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-contract EwolStablecoin is Ownable, ERC20 {
+contract Stablecoin is Ownable, ERC20 {
 
     constructor(uint256 initialSupply) public ERC20("EwolStablecoin", "EWS") {
         _mint(msg.sender, initialSupply);
