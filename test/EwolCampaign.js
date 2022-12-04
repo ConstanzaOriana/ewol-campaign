@@ -427,7 +427,7 @@ describe("EwolCampaign", function () {
         .to.be.revertedWith("Not enough funds to start Bootcamp");
     });
 
-    it("Should allow the transition to Bootcamp period if weekly expenditure can be sustained", async function () {
+    it("Should allow the transition to Bootcamp period if expenditure can be sustained", async function () {
 
       const totalWeeklyExpenditure = await campaignInstance.totalWeeklyExpenditure();
       const weeksOfBootcamp = await campaignInstance.weeksOfBootcamp();
