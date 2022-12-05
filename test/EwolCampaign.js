@@ -533,7 +533,6 @@ describe("EwolCampaign", function () {
       expect(failedFinishBootcampTxNonOwner)
       .to.be.revertedWith(
         "Ownable: caller is not the owner"
-        // comment
       );
     });
   });
